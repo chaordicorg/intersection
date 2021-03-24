@@ -94,7 +94,8 @@ threshold: [0, 0.5, 1.0]	// 交差領域が50%変化するたびに発火
 
 		<article>
 			<h4>■ IE11対策</h4>
-			<p>「Intersection Observer」という命令がIEにはないので「<a href="http://preview.chaordic.co.jp/chaordic-lib/jquery.intersection/demo/intersection-observer.js" target="_blank">Polyfill</a>」で補完する。</p>
+			<p>「Intersection Observer」という命令がIEにはないので「<a href="http://preview.chaordic.co.jp/chaordic-lib/jquery.intersection/demo/intersection-observer.js" target="_blank">Polyfill の intersection-observer.js</a>」で補完する。</p>
+			<p></p>
 <pre><code>&lt;!-- IE11対策(Polyfill) --&gt;
 &lt;script&gt;
 	var userAgent = window.navigator.userAgent.toUpperCase();
@@ -102,6 +103,13 @@ threshold: [0, 0.5, 1.0]	// 交差領域が50%変化するたびに発火
 		document.write('&lt;script type="text/javascript" src="./intersection-observer.js"&gt;&lt;\/script&gt;');
 	}
 &lt;/script&gt;
+</code></pre>
+
+	<p>下のように読み込むと非同期で読み込まれるので、「intersection-observer.js」より先にプラグインが読み込まれてしまうので、エラーになる。</p>
+<pre><code>※※※ 上手くいかない例 ※※※
+var el = document.createElement('script');
+el.src = "./intersection-observer.js";
+document.getElementsByTagName('head')[0].appendChild(el);
 </code></pre>
 		</article>
 	</main>
