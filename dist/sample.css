@@ -1,0 +1,81 @@
+.wrapper {
+	max-width: 960px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-direction: row-reverse;
+}
+
+.indexWrapper {
+	position: sticky;
+	top: 0px;
+	width: 176px;
+}
+
+	/* IEは「position: sticky;」が使えない */
+	@media all and (-ms-high-contrast: none) {
+		.indexWrapper {
+			position: fixed;
+			top: 0px;
+			width: 176px;
+		}
+	}
+
+.contents {
+	width: calc(100% - 240px);
+}
+
+.index {
+	padding-left: 0;
+}
+
+.index li {
+	list-style: none;
+	color: #999999;
+}
+
+.index a {
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	padding: 8px;
+	border-radius: 4px;
+	text-decoration: none;
+	color: inherit;
+}
+.index a.active {
+	color: #333333;
+	background-color: #f3f3f3;
+}
+
+.contents img {
+	width: 100%;
+	height: auto;
+}
+
+
+
+#intro{
+	background: #000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	height:750px;
+	font-size: 64px;
+}
+
+#hakari{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index: -1;
+}
+
+	#hakari div{
+		border-bottom:dotted 1px #000;
+		height:100px;
+	}

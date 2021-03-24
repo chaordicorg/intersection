@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Template-jquery</title>
+
+	<!-- Bootstrap & jQuery -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+	<!-- highlight.js  -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/railscasts.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+	<script>
+		hljs.configure({ tabReplace: '    ' }) // スペース4つ
+		hljs.initHighlightingOnLoad();
+		$(function(){
+
+		});
+	</script>
+
+	<!-- css  -->
+	<style>
+		article{ margin-bottom: 40px; }
+		h1{ padding-bottom: 20px; }
+	</style>
+</head>
+
+
+
+<body>
+<div class="container">
+	<h5>■ jquery.intersection.js</h5>
+	<article>
+		| 使い方 
+		<a href="./sample.html">| サンプル </a>
+		<a href="https://github.com/chaordicorg/*****" target="_blank">| ダウンロード |</a>
+	</article>
+
+	<main>
+
+		<article>
+			<h4>■ 使用例</h4>
+<pre><code>$('body').intersection({
+	"root": null,		// ルートの要素（nullでビューポイント）
+	"rootMargin": "-50%",	// ルートの重なり判定領域(上右下左)
+	"threshold": 0,		// targetの閾値(0で0%、1で100%で全身)
+	"target": ".box",		// 交差を監視する要素
+	callback: function(_dom){
+		console.log(_dom);
+	}
+});
+</code></pre>
+			<p>
+				“target”で指定した要素が”root”と指定した条件で交差すると、<br/>
+				”callback”にエレメント（_dom）が返却される。<br/>
+				交差判定後のアクションは_domをよりどころに設定する。<br/>
+				<br/>
+				_domをjQuery形式で扱いたい場合は以下のように指定。<br/>
+				$dom = $(_dom);
+			</p>
+		</article>
+
+
+
+		<article>
+			<h4>■ 「rootMargin」の例</h4>
+<pre><code>"rootMargin": "0px 0px -100% 0px",	//一番上(上右下左)
+"rootMargin": "0px 0px -90% 0px",	//一番上から10%(上右下左)
+"rootMargin": "0px",			//一番下
+"rootMargin": "-50%",			// 天地の中心
+</code></pre>
+			<p>
+				※値が0でも単位（pxや％）が必要。<br/>
+				※また、ルートとターゲットは親子関係でなければならない。
+			</p>
+		</article>
+
+
+
+		<article>
+			<h4>■ 「threshold」の例</h4>
+<pre><code>"threshold": 0,		// rootと交差したら
+"threshold": 0.5,	// rootと50%交差したら
+"threshold": 1,		// rootと100%交差したら（つまり、rootとすべて重なったら）
+threshold: [0, 0.5, 1.0]	// 交差領域が50%変化するたびに発火
+</code></pre>
+		</article>
+
+
+
+
+		<article>
+			<h4>■ IE11対策</h4>
+			<p>「Intersection Observer」という命令がIEにはないので「<a href="http://preview.chaordic.co.jp/chaordic-lib/jquery.intersection/demo/intersection-observer.js" target="_blank">Polyfill</a>」で補完する。</p>
+<pre><code>&lt;!-- IE11対策(Polyfill) --&gt;
+&lt;script type="text/javascript" &gt;
+if (navigator.userAgent.indexOf('msie') &gt;= 0 || navigator.userAgent.indexOf('Trident') &gt;= 0){
+	var el = document.createElement('script');
+	el.src = "./intersection-observer.js";
+	document.getElementsByTagName('head')[0].appendChild(el);	// HEAD要素の最後に追加
+}
+&lt;/script&gt;
+</code></pre>
+		</article>
+	</main>
+</div>
+
+
+
+<script>
+
+</script>
+</body>
+
+
+
+</html>
