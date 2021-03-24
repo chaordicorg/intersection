@@ -36,7 +36,7 @@
 	<article>
 		| 使い方 
 		<a href="./sample.html">| サンプル </a>
-		<a href="https://github.com/chaordicorg/*****" target="_blank">| ダウンロード |</a>
+		<a href="https://github.com/chaordicorg/intersection/" target="_blank">| ダウンロード |</a>
 	</article>
 
 	<main>
@@ -96,12 +96,11 @@ threshold: [0, 0.5, 1.0]	// 交差領域が50%変化するたびに発火
 			<h4>■ IE11対策</h4>
 			<p>「Intersection Observer」という命令がIEにはないので「<a href="http://preview.chaordic.co.jp/chaordic-lib/jquery.intersection/demo/intersection-observer.js" target="_blank">Polyfill</a>」で補完する。</p>
 <pre><code>&lt;!-- IE11対策(Polyfill) --&gt;
-&lt;script type="text/javascript" &gt;
-if (navigator.userAgent.indexOf('msie') &gt;= 0 || navigator.userAgent.indexOf('Trident') &gt;= 0){
-	var el = document.createElement('script');
-	el.src = "./intersection-observer.js";
-	document.getElementsByTagName('head')[0].appendChild(el);	// HEAD要素の最後に追加
-}
+&lt;script&gt;
+	var userAgent = window.navigator.userAgent.toUpperCase();
+	if (!(userAgent.indexOf('MSIE') === -1 &amp;&amp; userAgent.indexOf('TRIDENT') === -1)){
+		document.write('&lt;script type="text/javascript" src="./intersection-observer.js"&gt;&lt;\/script&gt;');
+	}
 &lt;/script&gt;
 </code></pre>
 		</article>

@@ -20,12 +20,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
 	<!-- IE11対策(Polyfill) -->
-	<script type="text/javascript" >
-	if (navigator.userAgent.indexOf('msie') >= 0 || navigator.userAgent.indexOf('Trident') >= 0){
-		var el = document.createElement('script');
-		el.src = "./intersection-observer.js";
-		document.getElementsByTagName('head')[0].appendChild(el);	// HEAD要素の最後に追加
-	}
+	<script>
+		var userAgent = window.navigator.userAgent.toUpperCase();
+		if (!(userAgent.indexOf('MSIE') === -1 && userAgent.indexOf('TRIDENT') === -1)){
+			document.write('<script type="text/javascript" src="./intersection-observer.js"><\/script>');
+		}
 	</script>
 
 	<!-- jquery.intersection.js -->
@@ -122,7 +121,7 @@
 	<article>
 		<a href="./">| 使い方 </a>
 		| サンプル 
-		<a href="https://github.com/chaordicorg/*****" target="_blank">| ダウンロード |</a>
+		<a href="https://github.com/chaordicorg/intersection/" target="_blank">| ダウンロード |</a>
 	</article>
 
 	<div class="wrapper">
